@@ -35,7 +35,7 @@ const Index: NextPage = () => {
       <div>Please type your prompt</div>
       <input value={value} onChange={handleInput} onKeyDown={handleKeyDown} />
       <div>Prompt: {prompt}</div>
-      <div>Completion: {completion.split('\n').map(item => <>{item}<br/></>)}</div>
+      <div>Completion: {completion.split('\n').map((item, idx )=> <span key={idx}>{item}<br/></span>)}</div>
     </div>
   );
 };
