@@ -32,7 +32,7 @@ const Index: NextPage = () => {
 
   return (
     <div className={styles.main}>
-      <div>Please type your prompt</div>
+      <div>Please type your prompt and hit enter</div>
       <input value={value} onChange={handleInput} onKeyDown={handleKeyDown} />
       <div>Prompt: {prompt}</div>
       <div>Completion: {completion.split('\n').map((item, idx )=> <span key={idx}>{item}<br/></span>)}</div>

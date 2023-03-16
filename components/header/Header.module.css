@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #d29b9b;
+    background-color: #b2e5aa;
     color: #fff;
     padding: 1rem;
   }
@@ -12,7 +12,7 @@
   }
   
   .navLink {
-    color: #fff;
+    color: #777777;
     text-decoration: none;
     margin-left: 1rem;
     font-weight: bold;

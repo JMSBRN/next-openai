@@ -11,9 +11,19 @@
   }
   
   .main div {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
     padding: 1px;
   }
     
   .main input {
     width: 80%;
+    margin: 10px 0;
+    padding: 10px;
+    color: grey;
+    font-size: 21px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    outline-style: none;
+    
   }
