@@ -1,33 +1,7 @@
-/* For mobile screens */
-@media only screen and (max-width: 600px) {
-    .container {
-      width: 100%;
-      padding: 20px;
-    }
-  }
-  
-  /* For tablet screens */
-  @media only screen and (min-width: 601px) and (max-width: 1024px) {
-    .container {
-      width: 90%;
-      margin: 0 auto;
-      padding: 30px;
-    }
-  }
-  
-  /* For desktop screens */
-  @media only screen and (min-width: 1025px) {
-    .container {
-      width: 99%;
-      margin: 0 auto;
-      padding: 40px;
-    }
-  }
-  
-  /* Common styles for all screen sizes */
+
   .container {
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 100vh;
+    background-color: #e9e9e9;
   }
   
