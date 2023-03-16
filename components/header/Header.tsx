@@ -9,7 +9,7 @@ const Header = () => {
           <Link className={styles.navLink} href={'/'}>Home</Link>
           <Link className={styles.navLink} href={'/about'}>About</Link>
           <Link className={styles.navLink} href={'/price'}>Price</Link>
-          <Link className={styles.navLink} href={'/shop'}>Shop</Link>
+          <Link className={styles.navLink} href={'/shop/shop'}>Shop</Link>
         </nav>
     </header>
   );
