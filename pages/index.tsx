@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import styles from '../styles/index.module.css';
+import styles from '../styles/Index.module.css';
 
 const Index: NextPage = () => {
   const [value, setValue] = React.useState<string>('');
