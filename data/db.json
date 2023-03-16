@@ -1,0 +1,30 @@
+[
+    {
+        "id":"1",
+        "title":"title_1",
+        "price": 5,
+        "decription":"description title 1",
+        "img": "/images/good_1.jpg"
+    },
+    {
+        "id":"2",
+        "title":"title_2",
+        "price": 1,
+        "decription":"description title 2",
+        "img": "/images/good_2.jpg"
+    },
+    {
+        "id":"3",
+        "title":"title_3",
+        "price": 2,
+        "decription":"description title 3",
+        "img": "/images/good_3.jpg"
+    },
+    {
+        "id":"4",
+        "title":"title_4",
+        "price": 4,
+        "decription":"description title 4",
+        "img": "/images/good_4.jpg"
+    }
+]
