@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
+import { FaLinkedin, FaGithub, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -16,22 +17,22 @@ const Footer = () => {
             <ul className={styles.socialIcons}>
               <li>
                 <a href="#">
-                  <i></i>
+                  <FaLinkedin className={styles.icon}/>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i></i>
+                <FaGithub className={styles.icon}/>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i></i>
+                  <FaFacebook className={styles.icon}/>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i></i>
+                  <FaInstagram className={styles.icon}/>
                 </a>
               </li>
             </ul>
