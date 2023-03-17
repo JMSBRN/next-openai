@@ -9,10 +9,11 @@ type LayoutType = {
 };
 
 const layout = ({ children }: LayoutType) => {
+  const { container, main } = styles;
   return (
-    <div className={styles.container}>
+    <div className={container}>
       <Header />
-      <div className={styles.main}>
+      <div className={main}>
        {children}
       </div>
       <Footer />

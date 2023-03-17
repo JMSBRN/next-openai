@@ -14,10 +14,11 @@ export const getStaticProps = async () => {
 };
 
 const Shop = ({ goods }: { goods: IGood[] }) => {
+  const { container, mainTitle, cards } = styles;
   return (
-    <div className={styles.container}>
-      <div className={styles.mainTitle}>Goods in store</div>
-      <div className={styles.cards}>
+    <div className={container}>
+      <div className={mainTitle}>Goods in store</div>
+      <div className={cards}>
         {goods.map((el) => (
           <Link href={`/shop/${el.id}`} key={el.id} >
             <Card good={el} />

@@ -5,29 +5,30 @@ import { useRouter } from 'next/router';
 
 const Header = () => {
   const router = useRouter();
+  const {header, navbar, active } = styles;
   return (
-    <header className={styles.header}>
-      <nav className={styles.navbar}>
+    <header className={header}>
+      <nav className={navbar}>
         <Link
-          className={router.pathname == '/' ? `${styles.active} ` : ''}
+          className={router.pathname == '/' ? `${active} ` : ''}
           href={'/'}
         >
           Home
         </Link>
         <Link
-          className={router.pathname == '/about' ? `${styles.active} ` : ''}
+          className={router.pathname == '/about' ? `${active} ` : ''}
           href={'/about'}
         >
           About
         </Link>
         <Link
-          className={router.pathname == '/price' ? `${styles.active} ` : ''}
+          className={router.pathname == '/price' ? `${active} ` : ''}
           href={'/price'}
         >
           Price
         </Link>
         <Link
-          className={router.pathname == '/shop/shop' ? `${styles.active} ` : ''}
+          className={router.pathname == '/shop/shop' ? `${active} ` : ''}
           href={'/shop/shop'}
         >
           Shop
