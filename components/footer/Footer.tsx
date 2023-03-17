@@ -4,11 +4,43 @@ import styles from './Footer.module.css';
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <a href="">place</a>
-      <a href="">place</a>
-      <a href="">place</a>
-      <a href="">place</a>
-      <h3>place h3</h3>
+      <div className={styles.container}>
+        <div className={styles.row}>
+          <div className={styles.col}>
+            <p>Contact us:</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +1 555-555-5555</p>
+          </div>
+          <div className={styles.col}>
+            <p>Follow us:</p>
+            <ul className={styles.socialIcons}>
+              <li>
+                <a href="#">
+                  <i></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className={styles.copy}>
+            <p>&copy; 2023 Your Company. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
