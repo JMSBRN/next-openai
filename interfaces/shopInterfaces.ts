@@ -5,4 +5,11 @@ export interface IGood {
     decription: string;
     img: string;
   }
+  export interface IPhoto  {
+    albumId: number;
+    id: number;
+    title: string;
+    url: string;
+    thumbnailUrl: string;
+}
   

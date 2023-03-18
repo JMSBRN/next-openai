@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import type { NextPage } from 'next';
 import styles from '../styles/Index.module.css';
 
 const Index: NextPage = () => {
-  const [value, setValue] = React.useState<string>('');
-  const [prompt, setPrompt] = React.useState<string>('');
-  const [completion, setCompletion] = React.useState<string>('');
+  const [value, setValue] = useState<string>('');
+  const [prompt, setPrompt] = useState<string>('');
+  const [completion, setCompletion] = useState<string>('');
 
-  const handleInput = React.useCallback(
+  const handleInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
     }, []);
 
-  const handleKeyDown = React.useCallback(
+  const handleKeyDown = useCallback(
     async (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
         setPrompt(value);
