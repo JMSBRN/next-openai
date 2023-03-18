@@ -22,10 +22,10 @@ const Header = () => {
           About
         </Link>
         <Link
-          className={router.pathname == '/price' ? `${active} ` : ''}
-          href={'/price'}
+          className={router.pathname == '/movies' ? `${active} ` : ''}
+          href={'/movies'}
         >
-          Price
+          Movies
         </Link>
         <Link
           className={router.pathname == '/shop/shop' ? `${active} ` : ''}
