@@ -22,8 +22,8 @@ const Header = () => {
           About
         </Link>
         <Link
-          className={router.pathname == '/movies' ? `${active} ` : ''}
-          href={'/movies'}
+          className={router.pathname == '/movies/movies' ? `${active} ` : ''}
+          href={'/movies/movies'}
         >
           Movies
         </Link>

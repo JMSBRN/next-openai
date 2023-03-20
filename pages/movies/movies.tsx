@@ -1,9 +1,10 @@
 import { IMovie } from '@/interfaces/apiInterfaces';
 import { objectKeysToLowerCase } from '@/utils/apiUtils';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import useSWR from 'swr';
-import styles from '../styles/Movies.module.css';
+import styles from './Movies.module.css';
 
 const url = 'https://www.omdbapi.com/?s=war&y=1990&type=movie&page=1&apikey=1f3b8f46&';
 
@@ -27,9 +28,11 @@ const Movies = () => {
     <div className="" style={{ color: 'red', position: 'absolute', right: '0'}}>develop in .....</div>
       {newArr?.map(el => (
         <div key={el.imdbID} className={container}>
-          <div className={title}>{el.title}</div>
-          <div className={year}>{el.year}</div>
-            <Image className={poster} src={(el.poster !== 'N/A' && el.poster) as string} width={70} height={80} alt={el.title} />
+          <Link href={`/movies/${el.imdbID}`}>
+            <div className={title}>{el.title}</div>
+            <div className={year}>{el.year}</div>
+              <Image className={poster} src={(el.poster !== 'N/A' && el.poster) as string} width={70} height={80} alt={el.title} />
+          </Link>
         </div>
       ))}
     </>
