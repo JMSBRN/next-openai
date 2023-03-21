@@ -5,8 +5,8 @@ import Link from 'next/link';
 import React from 'react';
 import useSWR from 'swr';
 import styles from './Movies.module.css';
-
-const url = 'https://www.omdbapi.com/?s=war&y=1990&type=movie&page=1&apikey=1f3b8f46&';
+const key = process.env.NEXT_PUBLIC_MOVIES_API_KEY;
+const url = `https://www.omdbapi.com/?s=war&y=1990&type=movie&page=1&apikey=${key}&`;
 
 const Movies = () => {
   const { container, title, poster, loading, year } = styles;
