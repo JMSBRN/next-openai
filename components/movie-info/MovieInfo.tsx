@@ -36,14 +36,16 @@ const MovieInfo: React.FC<IMovieInfoProps> = ({ movieInfo }) => {
   } = movieInfo;
   return (
   <div className={container}>
-    <Image 
-    className={posterImg}
-    src={poster ==='N/A' ? '/images/no-poster-img.png' : poster as string}
-    priority={true}
-    alt={'title'} 
-    width={400} 
-    height={600}
+    {!!poster &&
+      <Image 
+      className={posterImg}
+      src={poster ==='N/A' ? '/images/no-poster-img.png' : poster}
+      priority={true}
+      alt={'title'} 
+      width={400} 
+      height={600}
     />
+    }
       <div className={info}>
           <h1>{title}</h1>
           <p>{year}</p>
