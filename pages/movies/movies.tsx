@@ -1,18 +1,14 @@
+import { useGetMoviesSWR } from '@/hooks/apiHooks';
 import { IMovie } from '@/interfaces/apiInterfaces';
 import { objectKeysToLowerCase } from '@/utils/apiUtils';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import useSWR from 'swr';
 import styles from './Movies.module.css';
-
-const url = `https://www.omdbapi.com/?s=war&y=1990&type=movie&page=1&apikey=${process.env.NEXT_PUBLIC_MOVIES_API_KEY}`;
 
 const Movies = () => {
   const { container, title, poster, loading, year } = styles;
-  const fetcher = (...args:  Parameters<typeof fetch
-    >) => fetch(...args).then((res) => res.json());
-  const { data, isLoading } = useSWR(url, fetcher);
+  const {data, isLoading } = useGetMoviesSWR();
   const newArr: IMovie[] = data?.Search.map((el: IMovie) => {    
     const newObj = objectKeysToLowerCase(el);
     return (newObj);
