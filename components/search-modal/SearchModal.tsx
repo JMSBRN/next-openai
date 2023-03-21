@@ -4,9 +4,20 @@ import styles from './SearchModal.module.css';
 const SearchModal = () => {
   const { container, form } = styles;
   const [modalDisplayed, setModalDisplayed] = useState<boolean>(false);
-  const submit = (e: React.FormEvent) => {
+  const [formValue, setFormValue] = useState({
+    search: '',
+    year: '',
+    sort: 'title',
+    genre: ''
+  });
+  
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const {name , value } = e.target;
+    setFormValue({...formValue, [name]: value});
+  };
+  const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(e.target);
+    console.log(formValue);
   };
   return (
     <div
@@ -15,7 +26,7 @@ const SearchModal = () => {
       className={container}
     >
       {modalDisplayed && (
-          <form className={form} onSubmit={(e) => submit(e)}>
+          <form className={form} onSubmit={submitForm}>
             <label>
               Search:
               <input
@@ -23,6 +34,7 @@ const SearchModal = () => {
                 id="search-input"
                 name="search"
                 placeholder="Search..."
+                onChange={handleInputChange}
               />
             </label>
             <label>
@@ -31,14 +43,15 @@ const SearchModal = () => {
                 type="number"
                 id="year-input"
                 name="year"
-                max={2030}
-                min={1990}
+                max={2099}
+                min={1900}
                 placeholder="Year..."
+                onChange={handleInputChange}
               />
             </label>
             <label>
               Sort by:
-              <select id="sort-select" name="sort">
+              <select id="sort-select" name="sort" onChange={handleInputChange}>
                 <option value="title">Title</option>
                 <option value="year">Year</option>
               </select>
@@ -51,6 +64,7 @@ const SearchModal = () => {
                   id="genre-action"
                   name="genre"
                   value="action"
+                  onChange={handleInputChange}
                 />
                 <label htmlFor="genre-action">Action</label>
                 <input
@@ -58,6 +72,7 @@ const SearchModal = () => {
                   id="genre-drama"
                   name="genre"
                   value="drama"
+                  onChange={handleInputChange}
                 />
                 <label htmlFor="genre-drama">Drama</label>
                 <input
@@ -65,6 +80,7 @@ const SearchModal = () => {
                   id="genre-comedy"
                   name="genre"
                   value="comedy"
+                  onChange={handleInputChange}
                 />
                 <label htmlFor="genre-comedy">Comedy</label>
               </div>
