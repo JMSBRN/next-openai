@@ -9,7 +9,7 @@ import React from 'react';
 import styles from './Movies.module.css';
 
 const Movies = () => {
-  const { mainContainer, container, poster, loading } = styles;
+  const { mainContainer, container, poster } = styles;
   const {data, isLoading } = useGetMoviesSWR();
   const newArr: IMovie[] = data?.Search.map((el: IMovie) => {    
     const newObj = objectKeysToLowerCase(el);
