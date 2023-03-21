@@ -1,3 +1,4 @@
+import Preloader from '@/components/preloader/Preloader';
 import SearchModal from '@/components/search-modal/SearchModal';
 import { useGetMoviesSWR } from '@/hooks/apiHooks';
 import { IMovie } from '@/interfaces/apiInterfaces';
@@ -19,7 +20,7 @@ const Movies = () => {
     <>
     <SearchModal />
     {isLoading && 
-    <div className={loading}>Loading...</div>
+      <Preloader />
     }
      <div className={mainContainer}>
       {newArr?.map(el => (
