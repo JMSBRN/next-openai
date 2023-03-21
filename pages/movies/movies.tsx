@@ -1,3 +1,4 @@
+import SearchModal from '@/components/search-modal/SearchModal';
 import { useGetMoviesSWR } from '@/hooks/apiHooks';
 import { IMovie } from '@/interfaces/apiInterfaces';
 import { objectKeysToLowerCase } from '@/utils/apiUtils';
@@ -16,6 +17,7 @@ const Movies = () => {
 
   return (
     <>
+    <SearchModal />
     {isLoading && 
     <div className={loading}>Loading...</div>
     }
