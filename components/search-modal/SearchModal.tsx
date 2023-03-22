@@ -1,23 +1,27 @@
+import {
+  selectFormData,
+  setFormData,
+} from '@/features/movies/moviesSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import React, { useState } from 'react';
 import styles from './SearchModal.module.css';
 
 const SearchModal = () => {
   const { container, form } = styles;
   const [modalDisplayed, setModalDisplayed] = useState<boolean>(false);
-  const [formValue, setFormValue] = useState({
-    search: '',
-    year: '',
-    sort: 'title',
-    genre: ''
-  });
-  
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const {name , value } = e.target;
-    setFormValue({...formValue, [name]: value});
+  const dispatch = useAppDispatch();
+  const { formData } = useAppSelector(selectFormData);
+  const [formValue, setFormValue] = useState(formData);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormValue({ ...formValue, [name]: value });
   };
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formValue);
+    dispatch(setFormData(formValue));
   };
   return (
     <div
@@ -26,67 +30,72 @@ const SearchModal = () => {
       className={container}
     >
       {modalDisplayed && (
-          <form className={form} onSubmit={submitForm}>
-            <label>
-              Search:
-              <input
-                type="text"
-                id="search-input"
-                name="search"
-                placeholder="Search..."
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Year:
-              <input
-                type="number"
-                id="year-input"
-                name="year"
-                max={2099}
-                min={1900}
-                placeholder="Year..."
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Sort by:
-              <select id="sort-select" name="sort" onChange={handleInputChange}>
-                <option value="title">Title</option>
-                <option value="year">Year</option>
-              </select>
-            </label>
-
-            <label>
-              <div>
+        <form className={form} onSubmit={submitForm}>
+          <label>
+            Search:
+            <input
+              type="text"
+              id="search-input"
+              name="search"
+              placeholder="Search..."
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Year:
+            <input
+              type="number"
+              id="year-input"
+              name="year"
+              max={2099}
+              min={1900}
+              placeholder="Year..."
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Sort by:
+            <select id="sort-select" name="sort" onChange={handleInputChange}>
+              <option value="title">Title</option>
+              <option value="year">Year</option>
+            </select>
+          </label>
+          <label>
+            <div>
+              <label htmlFor="genre-comedy">
+                Movie
                 <input
                   type="radio"
-                  id="genre-action"
-                  name="genre"
-                  value="action"
+                  id="type-movie"
+                  name="type"
+                  value="movie"
                   onChange={handleInputChange}
                 />
-                <label htmlFor="genre-action">Action</label>
+              </label>
+              <label htmlFor="genre-action">
+                Series
                 <input
                   type="radio"
-                  id="genre-drama"
-                  name="genre"
-                  value="drama"
+                  id="type-series"
+                  name="type"
+                  value="series"
                   onChange={handleInputChange}
                 />
-                <label htmlFor="genre-drama">Drama</label>
+              </label>
+              <label htmlFor="genre-drama">
+                Episode
                 <input
                   type="radio"
-                  id="genre-comedy"
-                  name="genre"
-                  value="comedy"
+                  id="type-episode"
+                  name="type"
+                  value="episode"
                   onChange={handleInputChange}
                 />
-                <label htmlFor="genre-comedy">Comedy</label>
-              </div>
-            </label>
-            <input type="submit" />
-          </form>
+              </label>
+            </div>
+          </label>
+          <input type="submit" />
+        </form>
       )}
     </div>
   );
