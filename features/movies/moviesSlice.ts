@@ -1,9 +1,11 @@
 import { IMovie } from '@/interfaces/apiInterfaces';
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../../store/index';
+import { getMoviesThunk } from './getMoviesThunk';
 
 interface IInitialState {
   movies: IMovie[];
+  isLoading: boolean;
   formData:{
     search: string;
     year: string;
@@ -14,6 +16,7 @@ interface IInitialState {
 
 const initialState: IInitialState = {
   movies: [],
+  isLoading: false,
   formData: {
     search: 'war',
     year: '1990',
@@ -22,7 +25,7 @@ const initialState: IInitialState = {
   },
 };
 
-const userSlice = createSlice({
+const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers:
@@ -33,9 +36,16 @@ const userSlice = createSlice({
     setFormData: (state, action) => {
       state.formData = action.payload;      
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getMoviesThunk.pending, (state) => {
+       state.isLoading = true;
+    }).addCase(getMoviesThunk.fulfilled, (state) => {
+      state.isLoading = false;
+    });
   }
 });
 
-export const { setFormData, setMovies } = userSlice.actions;
+export const { setFormData, setMovies } = moviesSlice.actions;
 export const selectFormData = (state: RootState) => state.movies;
-export default userSlice.reducer;
+export default moviesSlice.reducer;

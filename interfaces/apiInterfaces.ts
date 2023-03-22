@@ -52,3 +52,8 @@ export interface IMovie {
     source: string;
     value: string;
   }
+  export interface IFormData {
+    search: string;
+    year: string;
+    type: string;
+  }

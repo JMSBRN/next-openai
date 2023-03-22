@@ -1,20 +1,20 @@
 import Preloader from '@/components/preloader/Preloader';
 import SearchModal from '@/components/search-modal/SearchModal';
-import { useGetMoviesSWR } from '@/hooks/apiHooks';
-import { IMovie } from '@/interfaces/apiInterfaces';
-import { objectKeysToLowerCase } from '@/utils/apiUtils';
+import { getMoviesThunk } from '@/features/movies/getMoviesThunk';
+import { selectFormData } from '@/features/movies/moviesSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Movies.module.css';
 
 const Movies = () => {
   const { mainContainer, container, poster } = styles;
-  const {data, isLoading } = useGetMoviesSWR();
-  const newArr: IMovie[] = data?.Search.map((el: IMovie) => {    
-    const newObj = objectKeysToLowerCase(el);
-    return (newObj);
-  });
+  const { formData, movies, isLoading } = useAppSelector(selectFormData);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getMoviesThunk(formData));    
+  },[dispatch, formData]);
 
   return (
     <>
@@ -23,7 +23,7 @@ const Movies = () => {
       <Preloader />
     }
      <div className={mainContainer}>
-      {newArr?.map(el => (
+      {movies.map(el => (
         <div key={el.imdbID} className={container}>
           <Link href={`/movies/${el.imdbID}`}>
               <Image 
