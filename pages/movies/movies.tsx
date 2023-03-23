@@ -13,7 +13,7 @@ const Movies = () => {
   const { formData, movies, isLoading } = useAppSelector(selectMovies);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getMoviesThunk());    
+   formData.search !== ' ' && dispatch(getMoviesThunk());    
   },[dispatch, formData]);
 
   return (

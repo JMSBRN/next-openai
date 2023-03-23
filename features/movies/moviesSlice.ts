@@ -18,9 +18,9 @@ const initialState: IInitialState = {
   movies: [],
   isLoading: false,
   formData: {
-    search: 'war',
-    year: '1990',
-    sort: 'title',
+    search: ' ',
+    year: ' ',
+    sort: ' ',
     type: 'movie'
   },
 };
