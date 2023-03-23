@@ -1,4 +1,3 @@
-import { IFormData } from '@/interfaces/apiInterfaces';
 import { getMovies } from '@/pages/api/apiMoviesUtils';
 import { RootState } from '@/store';
 import { createAsyncThunk } from '@reduxjs/toolkit';

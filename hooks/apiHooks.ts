@@ -1,9 +1,9 @@
-import { selectFormData } from '@/features/movies/moviesSlice';
+import { selectMovies } from '@/features/movies/moviesSlice';
 import useSWR  from 'swr';
 import { useAppSelector } from './reduxHooks';
 
 export const useGetMoviesSWR = () => {
-  const { formData } = useAppSelector(selectFormData);
+  const { formData } = useAppSelector(selectMovies);
   const { search, year, type, } = formData;  
     const url = `https://www.omdbapi.com/?s=${search}&y=${year}&type=${type}&page=1&apikey=${process.env.NEXT_PUBLIC_MOVIES_API_KEY}`;
     const fetcher = (...args:  Parameters<typeof fetch
