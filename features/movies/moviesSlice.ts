@@ -47,5 +47,5 @@ const moviesSlice = createSlice({
 });
 
 export const { setFormData, setMovies } = moviesSlice.actions;
-export const selectFormData = (state: RootState) => state.movies;
+export const selectMovies = (state: RootState) => state.movies;
 export default moviesSlice.reducer;

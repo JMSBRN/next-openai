@@ -1,7 +1,7 @@
 import Preloader from '@/components/preloader/Preloader';
 import SearchModal from '@/components/search-modal/SearchModal';
 import { getMoviesThunk } from '@/features/movies/getMoviesThunk';
-import { selectFormData } from '@/features/movies/moviesSlice';
+import { selectMovies } from '@/features/movies/moviesSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,10 +10,10 @@ import styles from './Movies.module.css';
 
 const Movies = () => {
   const { mainContainer, container, poster } = styles;
-  const { formData, movies, isLoading } = useAppSelector(selectFormData);
+  const { formData, movies, isLoading } = useAppSelector(selectMovies);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getMoviesThunk(formData));    
+    dispatch(getMoviesThunk());    
   },[dispatch, formData]);
 
   return (

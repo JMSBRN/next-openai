@@ -1,5 +1,5 @@
 import {
-  selectFormData,
+  selectMovies,
   setFormData,
 } from '@/features/movies/moviesSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
@@ -10,7 +10,7 @@ const SearchModal = () => {
   const { container, form } = styles;
   const [modalDisplayed, setModalDisplayed] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const { formData } = useAppSelector(selectFormData);
+  const { formData } = useAppSelector(selectMovies);
   const [formValue, setFormValue] = useState(formData);
 
   const handleInputChange = (
