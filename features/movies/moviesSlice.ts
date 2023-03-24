@@ -8,6 +8,7 @@ interface IInitialState {
   errorApi: string;
   isLoading: boolean;
   isApiError: boolean;
+  isOffline: boolean;
   formData:{
     search: string;
     year: string;
@@ -21,6 +22,7 @@ const initialState: IInitialState = {
   errorApi: '',
   isLoading: false,
   isApiError: false,
+  isOffline: false,
   formData: {
     search: ' ',
     year: ' ',
@@ -54,6 +56,7 @@ const moviesSlice = createSlice({
       state.isLoading = false;
     }).addCase(getMoviesThunk.rejected, (state) => {
       state.isLoading = false;
+      state.isOffline = true;
       console.log('rejected');
       
     });

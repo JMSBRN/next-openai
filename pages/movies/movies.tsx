@@ -10,8 +10,8 @@ import React, { useEffect } from 'react';
 import styles from './Movies.module.css';
 
 const Movies = () => {
-  const { mainContainer, container, poster, welcome } = styles;
-  const { formData, movies, isLoading, isApiError, errorApi } = useAppSelector(selectMovies);
+  const { mainContainer, container, poster, welcome, offLine } = styles;
+  const { formData, movies, isLoading, isApiError, errorApi, isOffline } = useAppSelector(selectMovies);
   const dispatch = useAppDispatch();
   const isSearching = formData.search !== ' ';
   useEffect(() => {
@@ -20,6 +20,12 @@ const Movies = () => {
 
   return (
     <>
+    {
+      isOffline && 
+        <div className={offLine}>
+         Your internet connection is currently offline. Please check your internet connection and ensure that all cables are properly connected. If the problem persists, please try resetting your modem or router. If these steps do not resolve the issue, please contact your internet service provider for further assistance.
+        </div>
+    }
     <SearchModal />
     {isLoading && 
       <Preloader />
