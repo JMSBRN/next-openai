@@ -52,7 +52,8 @@ const moviesSlice = createSlice({
        state.isLoading = true;
     }).addCase(getMoviesThunk.fulfilled, (state) => {
       state.isLoading = false;
-    }).addCase(getMoviesThunk.rejected, () => {
+    }).addCase(getMoviesThunk.rejected, (state) => {
+      state.isLoading = false;
       console.log('rejected');
       
     });

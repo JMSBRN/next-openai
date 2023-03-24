@@ -10,6 +10,6 @@ export const getMoviesThunk =  createAsyncThunk(
         dispatch(setMovies(data));
       }
       dispatch(setErrorApi(data.Error));
-      dispatch(setIsApiError(true));
+     data.Error && dispatch(setIsApiError(true));
     }
 );
