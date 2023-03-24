@@ -7,7 +7,7 @@ interface IMovieInfoProps {
   movieInfo: Partial<IMovieInfo>;
 }
 const MovieInfo: React.FC<IMovieInfoProps> = ({ movieInfo }) => {
-    const { container, info, posterImg } = styles;
+    const { container, info, posterImg, posterWrapper, plotText } = styles;
   const {
     title,
     year,
@@ -35,16 +35,19 @@ const MovieInfo: React.FC<IMovieInfoProps> = ({ movieInfo }) => {
   } = movieInfo;
   return (
   <div className={container}>
-    {!!poster &&
-      <Image 
-      className={posterImg}
-      src={poster ==='N/A' ? '/images/no-poster-img.png' : poster}
-      priority={true}
-      alt={'title'} 
-      width={400} 
-      height={600}
-    />
+    <div className={posterWrapper}>
+    { 
+      !!poster &&
+        <Image 
+        className={posterImg}
+        src={poster ==='N/A' ? '/images/no-poster-img.png' : poster}
+        priority={true}
+        alt={'title'} 
+        width={400} 
+        height={600}
+      />
     }
+    </div>
       <div className={info}>
       <h1>{title}</h1>
       <p>Year: {year}</p>
@@ -55,7 +58,7 @@ const MovieInfo: React.FC<IMovieInfoProps> = ({ movieInfo }) => {
       <p>Director: {director}</p>
       <p>Writer: {writer}</p>
       <p>Actors: {actors}</p>
-      <p>Plot: {plot}</p>
+      <div>Plot: <div className={plotText}>{plot}</div></div>
       <p>Language: {language}</p>
       <p>Country: {country}</p>
       <p>Awards: {awards}</p>

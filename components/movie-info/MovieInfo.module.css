@@ -15,7 +15,7 @@
     margin-bottom: 5px;
   }
   
-  .info p {
+  .info  p  {
     font-size: 16px;
     color: #666;
     margin-bottom: 5px;
@@ -25,9 +25,21 @@
   .info p:first-child {
     font-weight: 500;
   }
-  
+  .plotText {
+    padding: 10px;
+    max-width: 600px;
+    word-wrap: break-word;
+    line-height: 25px;
+    color: #666;
+  }
+  .posterWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+  }
   .posterImg {
-    width: auto;
+    min-width: 300px;
     max-width: auto;
     height: auto;
     border-radius: 5px;
@@ -36,6 +48,7 @@
   
   @media (min-width: 768px) {
     .container {
+      display: flex;
       flex-direction: row;
       align-items: center;
     }
