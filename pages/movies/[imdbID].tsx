@@ -7,7 +7,7 @@ import MovieInfo from '@/components/movie-info/MovieInfo';
 import styles from './Movie.module.css';
 
 const Movie = () => {
-const [movieInfo, setMovieInfo] = useState<IMovieInfo>({});
+const [movieInfo, setMovieInfo] = useState<Partial<IMovieInfo>>({});
 const id = useRouter().query.imdbID;
 
   useEffect(() => {

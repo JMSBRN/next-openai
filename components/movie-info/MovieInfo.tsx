@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './MovieInfo.module.css';
 
 interface IMovieInfoProps {
-  movieInfo: IMovieInfo;
+  movieInfo: Partial<IMovieInfo>;
 }
 const MovieInfo: React.FC<IMovieInfoProps> = ({ movieInfo }) => {
     const { container, info, posterImg } = styles;
@@ -24,15 +24,14 @@ const MovieInfo: React.FC<IMovieInfoProps> = ({ movieInfo }) => {
     awards,
     poster,
     metascore,
-    imdbrating,
-    imdbvotes,
-    imdbid,
+    imdbRating,
+    imdbVotes,
+    imdbID,
     type,
-    dvd,
-    oxoffice,
+    dVD,
+    boxOffice,
     production,
     website,
-    response,
   } = movieInfo;
   return (
   <div className={container}>
@@ -47,29 +46,28 @@ const MovieInfo: React.FC<IMovieInfoProps> = ({ movieInfo }) => {
     />
     }
       <div className={info}>
-          <h1>{title}</h1>
-          <p>{year}</p>
-          <p>{rated}</p>
-          <p>{released}</p>
-          <p>{runtime}</p>
-          <p>{genre}</p>
-          <p>{director}</p>
-          <p>{writer}</p>
-          <p>{actors}</p>
-          <p>{plot}</p>
-          <p>{language}</p>
-          <p>{country}</p>
-          <p>{awards}</p>
-          <p>{metascore}</p>
-          <p>{imdbrating}</p>
-          <p>{imdbvotes}</p>
-          <p>{imdbid}</p>
-          <p>{type}</p>
-          <p>{dvd}</p>
-          <p>{oxoffice}</p>
-          <p>{production}</p>
-          <p>{website}</p>
-          <p>{response}</p>
+      <h1>{title}</h1>
+      <p>Year: {year}</p>
+      <p>Rated: {rated}</p>
+      <p>Released: {released}</p>
+      <p>Runtime: {runtime}</p>
+      <p>Genre: {genre}</p>
+      <p>Director: {director}</p>
+      <p>Writer: {writer}</p>
+      <p>Actors: {actors}</p>
+      <p>Plot: {plot}</p>
+      <p>Language: {language}</p>
+      <p>Country: {country}</p>
+      <p>Awards: {awards}</p>
+      <p>Metascore: {metascore}</p>
+      <p>IMDb Rating: {imdbRating}</p>
+      <p>IMDb Votes: {imdbVotes}</p>
+      <p>IMDb ID: {imdbID}</p>
+      <p>Type: {type}</p>
+      <p>DVD: {dVD}</p>
+      <p>Box Office: {boxOffice}</p>
+      <p>Production: {production}</p>
+      <p>Website: {website}</p>
       </div>
     </div>
   );
