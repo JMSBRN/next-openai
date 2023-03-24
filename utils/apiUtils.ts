@@ -1,6 +1,6 @@
-import { IResponse, IMovie, IMovieInfo } from '@/interfaces/apiInterfaces';
+import { IResponse, IMovie, IMovieInfo, IRating } from '@/interfaces/apiInterfaces';
 
-export const objectKeysToLowerCase = (obj: IResponse | IMovie | IMovieInfo) => {
+export const objectKeysToLowerCase = (obj: IResponse | IMovie | IMovieInfo | IRating) => {
   const entries = Object.entries(obj);
   const newObj = Object.fromEntries(
     entries.map(([key, value]) => {
