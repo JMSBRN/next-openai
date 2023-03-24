@@ -1,27 +1,34 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'; 
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { getMovieInfoById } from '../api/apiMoviesUtils';
-import { IMovieInfo } from '@/interfaces/apiInterfaces';
 import MovieInfo from '@/components/movie-info/MovieInfo';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { selectMovies } from '@/features/movies/moviesSlice';
 import styles from './Movie.module.css';
+import { getMovieInfoThunk } from '@/features/movies/getMovieInfoThunk';
+import Preloader from '@/components/preloader/Preloader';
 
 const Movie = () => {
-const [movieInfo, setMovieInfo] = useState<Partial<IMovieInfo>>({});
-const id = useRouter().query.imdbID;
+  const { movieInfo, isLoading } = useAppSelector(selectMovies);
+  const dispatch = useAppDispatch();
+  const id = useRouter().query.imdbID;
 
   useEffect(() => {
-   const getdata = async () => {
-      const data = await getMovieInfoById(id as string);
-      setMovieInfo(data);
-    };
-    getdata();
-  }, [id]);
-  
+    dispatch(getMovieInfoThunk(id as string));
+  }, [dispatch, id]);
+
   return (
     <div>
-      <Link className={styles.homeLink} href={'/movies/movies'}>Back to Movies</Link>
-      <MovieInfo movieInfo={movieInfo} />
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <>
+          <Link className={styles.homeLink} href={'/movies/movies'}>
+            Back to Movies
+          </Link>
+          <MovieInfo movieInfo={movieInfo} />
+        </>
+      )}
     </div>
   );
 };

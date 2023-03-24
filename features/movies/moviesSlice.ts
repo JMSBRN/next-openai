@@ -1,10 +1,12 @@
-import { IMovie } from '@/interfaces/apiInterfaces';
+import { IMovie, IMovieInfo } from '@/interfaces/apiInterfaces';
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../../store/index';
+import { getMovieInfoThunk } from './getMovieInfoThunk';
 import { getMoviesThunk } from './getMoviesThunk';
 
 interface IInitialState {
   movies: IMovie[];
+  movieInfo: Partial<IMovieInfo>;
   errorApi: string;
   isLoading: boolean;
   isApiError: boolean;
@@ -19,6 +21,7 @@ interface IInitialState {
 
 const initialState: IInitialState = {
   movies: [],
+  movieInfo: {},
   errorApi: '',
   isLoading: false,
   isApiError: false,
@@ -47,6 +50,9 @@ const moviesSlice = createSlice({
     },
     setIsApiError: (state, acton) => {
       state.isApiError = acton.payload;
+    },
+    setMovieInfo: (state, acton) => {
+      state.movieInfo = acton.payload;
     }
   },
   extraReducers: (builder) => {
@@ -57,12 +63,14 @@ const moviesSlice = createSlice({
     }).addCase(getMoviesThunk.rejected, (state) => {
       state.isLoading = false;
       state.isOffline = true;
-      console.log('rejected');
-      
+    }).addCase(getMovieInfoThunk.pending, (state) => {
+      state.isLoading = true;
+    }).addCase(getMovieInfoThunk.fulfilled, (state) => {
+      state.isLoading = false;
     });
   }
 });
 
-export const { setFormData, setMovies, setErrorApi, setIsApiError } = moviesSlice.actions;
+export const { setFormData, setMovies, setErrorApi, setIsApiError, setMovieInfo } = moviesSlice.actions;
 export const selectMovies = (state: RootState) => state.movies;
 export default moviesSlice.reducer;
