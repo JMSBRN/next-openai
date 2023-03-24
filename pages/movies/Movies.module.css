@@ -8,12 +8,16 @@
   color: #7d7d7d;
 }
 .offLine {
-  margin: 30px auto;
+  margin: 100px auto;
+  width: 80%;
+  display: flex;
+  padding: 10px;
   text-align: center;
-  display: block;
   font-size: 1rem;
   font-weight: bold;
+  line-height: 25px;
   color: rgb(255, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .mainContainer {

@@ -81,15 +81,19 @@ const moviesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getMoviesThunk.pending, (state) => {
        state.isLoading = true;
-    }).addCase(getMoviesThunk.fulfilled, (state) => {
-      state.isLoading = false;
-    }).addCase(getMoviesThunk.rejected, (state) => {
+       state.isOffline = false;
+      }).addCase(getMoviesThunk.fulfilled, (state) => {
+        state.isLoading = false;
+      }).addCase(getMoviesThunk.rejected, (state) => {
       state.isLoading = false;
       state.isOffline = true;
     }).addCase(getMovieInfoThunk.pending, (state) => {
       state.isLoading = true;
+      state.isOffline = false;
     }).addCase(getMovieInfoThunk.fulfilled, (state) => {
       state.isLoading = false;
+    }).addCase(getMovieInfoThunk.rejected, (state) => {
+      state.isOffline = true;
     });
   }
 });
