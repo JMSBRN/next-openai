@@ -2,9 +2,11 @@ import React from 'react';
 import styles from './Preloader.module.css';
 
 const Preloader = () => {
-    const {spinner} = styles;
+    const {preloader, spinner} = styles;
   return (
-    <div className={spinner}></div>
+    <div className={preloader}>
+      <div className={spinner}></div>
+    </div>
   );
 };
 

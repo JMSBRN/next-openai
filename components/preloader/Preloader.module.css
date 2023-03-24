@@ -1,31 +1,34 @@
-.spinner {
-    width: 50px;
-    height: 50px;
-    position: relative;
-    margin: auto;
+/* Create a div element for the preloader */
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+/* Style the spinner or animation for the preloader */
+.preloader .spinner {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-top-color:  #bfe19f;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  z-index: 100; /* Set the z-index to make sure the preloader is on top of everything else */
+}
+
+/* Define the keyframes for the spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .spinner::before {
-    content: "";
-    display: block;
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    top: 45%;
-    left: 45%;
-    border-radius: 50%;
-    border: 5px solid #ff1717;
-    border-color: #b4a6a6 transparent #b4a6a6 transparent;
-    animation: spinner 1.5s linear infinite;
-    z-index: 9999;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  @keyframes spinner {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
+}
