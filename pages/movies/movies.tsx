@@ -9,18 +9,26 @@ import React, { useEffect } from 'react';
 import styles from './Movies.module.css';
 
 const Movies = () => {
-  const { mainContainer, container, poster } = styles;
+  const { mainContainer, container, poster, welcome } = styles;
   const { formData, movies, isLoading } = useAppSelector(selectMovies);
   const dispatch = useAppDispatch();
+  const isSearching = formData.search !== ' ';
   useEffect(() => {
-   formData.search !== ' ' && dispatch(getMoviesThunk());    
-  },[dispatch, formData]);
+   isSearching && dispatch(getMoviesThunk());    
+  },[dispatch, formData, isSearching]);
 
   return (
     <>
     <SearchModal />
     {isLoading && 
       <Preloader />
+    }
+    {
+      !isSearching && 
+      <div className={welcome}>
+        <h2>Discover your next favorite movie.</h2>
+        <div>Try searching in the modal at the top.</div>
+      </div>
     }
      <div className={mainContainer}>
       {movies.map(el => (
