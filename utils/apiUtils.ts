@@ -10,3 +10,7 @@ export const objectKeysToLowerCase = (obj: IResponse | IMovie | IMovieInfo) => {
   );
   return newObj;
 };
+export const sortArrByConditions = (arr: IMovie[], func: (a: IMovie, b: IMovie) => boolean) => {
+  arr.sort((a, b) => (func(a, b) ? 1 : func(b, a) ? -1 : 0));
+  return arr;
+};

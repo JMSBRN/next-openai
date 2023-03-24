@@ -1,6 +1,7 @@
 import {
   selectMovies,
   setFormData,
+  setselectedSort,
 } from '@/features/movies/moviesSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import React, { useState } from 'react';
@@ -18,6 +19,9 @@ const SearchModal = () => {
   ) => {
     const { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
+    if(name === 'sort') {
+      dispatch(setselectedSort(value));
+    }
   };
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,8 +60,10 @@ const SearchModal = () => {
           <label>
             Sort by:
             <select id="sort-select" name="sort" onChange={handleInputChange}>
-              <option value="title">Title</option>
-              <option value="year">Year</option>
+              <option value="a">Title A-Z</option>
+              <option value="b">Title Z-A</option>
+              <option value="c">Year max-min</option>
+              <option value="d">Year min-max</option>
             </select>
           </label>
           <label>

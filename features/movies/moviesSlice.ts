@@ -1,4 +1,5 @@
 import { IMovie, IMovieInfo } from '@/interfaces/apiInterfaces';
+import { sortArrByConditions } from '@/utils/apiUtils';
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../../store/index';
 import { getMovieInfoThunk } from './getMovieInfoThunk';
@@ -7,6 +8,7 @@ import { getMoviesThunk } from './getMoviesThunk';
 interface IInitialState {
   movies: IMovie[];
   movieInfo: Partial<IMovieInfo>;
+  selectedSort: string;
   errorApi: string;
   isLoading: boolean;
   isApiError: boolean;
@@ -22,6 +24,7 @@ interface IInitialState {
 const initialState: IInitialState = {
   movies: [],
   movieInfo: {},
+  selectedSort: '',
   errorApi: '',
   isLoading: false,
   isApiError: false,
@@ -53,6 +56,26 @@ const moviesSlice = createSlice({
     },
     setMovieInfo: (state, acton) => {
       state.movieInfo = acton.payload;
+    },
+    setselectedSort: (state, action) => {
+      state.selectedSort = action.payload;
+      switch (action.payload) {
+        case 'a':
+          state.movies = sortArrByConditions(state.movies, (a, b) => a.title > b.title);
+          return;
+        case 'b':
+          state.movies = sortArrByConditions(state.movies, (a, b) => b.title > a.title);
+          return;
+        case 'c':
+          state.movies = sortArrByConditions(state.movies, (a, b) => a.year > b.year);
+          return;
+        case 'd':
+          state.movies = sortArrByConditions(state.movies, (a, b) => b.year > a.year);
+          return;
+        default:
+          state.movies;
+          return;
+      }
     }
   },
   extraReducers: (builder) => {
@@ -71,6 +94,6 @@ const moviesSlice = createSlice({
   }
 });
 
-export const { setFormData, setMovies, setErrorApi, setIsApiError, setMovieInfo } = moviesSlice.actions;
+export const { setFormData, setMovies, setErrorApi, setIsApiError, setMovieInfo, setselectedSort } = moviesSlice.actions;
 export const selectMovies = (state: RootState) => state.movies;
 export default moviesSlice.reducer;
