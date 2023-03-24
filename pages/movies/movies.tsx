@@ -1,3 +1,4 @@
+import ErrorModal from '@/components/error-modal/ErrorModal';
 import Preloader from '@/components/preloader/Preloader';
 import SearchModal from '@/components/search-modal/SearchModal';
 import { getMoviesThunk } from '@/features/movies/getMoviesThunk';
@@ -10,7 +11,7 @@ import styles from './Movies.module.css';
 
 const Movies = () => {
   const { mainContainer, container, poster, welcome } = styles;
-  const { formData, movies, isLoading } = useAppSelector(selectMovies);
+  const { formData, movies, isLoading, isApiError, errorApi } = useAppSelector(selectMovies);
   const dispatch = useAppDispatch();
   const isSearching = formData.search !== ' ';
   useEffect(() => {
@@ -29,6 +30,9 @@ const Movies = () => {
         <h2>Discover your next favorite movie.</h2>
         <div>Try searching in the modal at the top.</div>
       </div>
+    }
+    {
+      isApiError && <ErrorModal message={errorApi} />
     }
      <div className={mainContainer}>
       {movies.map(el => (
