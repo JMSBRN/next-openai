@@ -1,25 +1,27 @@
 import React from 'react';
 import Card from '@/components/card/Card';
 import { IGood } from '@/interfaces/shopInterfaces';
-import goods from '../../data/db.json';
 import styles from './Shop.module.css';
 import Link from 'next/link';
+import { getGoodsFromGoogle } from '../api/apiGoodsUtils';
 
 export const getStaticProps = async () => {
+ const data = await getGoodsFromGoogle();
   return {
     props: {
-      goods: goods,
+      goods: data,
     },
   };
 };
 
-const Shop = ({ goods }: { goods: IGood[] }) => {
+const Shop = ({ goods}: { goods: IGood[] }) => {
   const { container, mainTitle, cards } = styles;
+  const newArr = goods.slice(1);
   return (
     <div className={container}>
-      <div className={mainTitle}>Goods in store</div>
+      <div className={mainTitle}>Goods in store db from google Sheets</div>
       <div className={cards}>
-        {goods.map((el) => (
+        {newArr.map((el) => (
           <Link href={`/shop/${el.id}`} key={el.id} >
             <Card good={el} />
           </Link>

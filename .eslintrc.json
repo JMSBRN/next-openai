@@ -23,6 +23,7 @@
     "rules": {
       "no-multiple-empty-lines":["error", { "max": 1}],
       "quotes": ["error", "single"],
-      "semi": "error"
+      "semi": "error",
+      "import/newline-after-import": ["error", { "count": 1 }]
     }
 }

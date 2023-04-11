@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import formDataReducer from '../features/movies/moviesSlice';
+import moviesReducer from '../features/movies/moviesSlice';
+import goodsReducer from '../features/shop/goodsSlice';
 const store = configureStore({
   reducer: {
-    movies: formDataReducer,
+    movies: moviesReducer,
+    goods:  goodsReducer,
   },
 });
 

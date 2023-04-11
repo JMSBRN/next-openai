@@ -22,5 +22,7 @@ export const getMovies = async () => {
 export const getMovieInfoById = async (id: string) => {
    const res = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${key}`);
    const data: Partial<IMovieInfo> = objectKeysToLowerCase(await res.json());
+   console.log(data);
+   
    return data;
 };
