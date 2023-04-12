@@ -41,7 +41,7 @@ const Good = ({ good, data }: { good: IGood, data: IGood[]}) => {
     <div className={container}>
       <Link href={'/shop/shop'} className={main}>
         <div className="title">{title}</div>
-        <Image src={img} width={200} height={400} alt={title} />
+        <Image  src={img} width={200} height={400} alt={title} />
         <div className="price"> Price {price}</div>
         <div className="description">{description}</div>
       </Link>

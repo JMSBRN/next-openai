@@ -9,10 +9,12 @@ interface CardProps {
 }
 const Card = (props: CardProps) => {
     const { title, price, description, img } = props.good;
-    const {card, cardTitle, cardPrice, cardDescription } = styles;
+    const {card, cardTitle, cardPrice, cardDescription, imageContainer, cardImage } = styles;
   return (
     <div className={card}>
-      <Image src={img} alt={title} width={127} height={130} />
+      <div className={imageContainer}>
+       <Image className={cardImage} src={img} alt={title} width={127} height={130} />
+      </div>
       <div className={cardTitle}>{title}</div>
       <div className={cardPrice}>price: {price} eur</div>
       <div className={cardDescription}>{description}</div>

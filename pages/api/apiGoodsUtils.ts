@@ -1,15 +1,18 @@
 import { google } from 'googleapis';
 
-const auth = new google.auth.GoogleAuth({
-    keyFile: '/Users/Acer/keyfile.json',
-    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-});
-const sheets = google.sheets({ version: 'v4', auth });
+const target = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const jwt = new google.auth.JWT(
+  process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
+  undefined,
+  (process.env.GOOGLE_SHEETS_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+  target
+);
+const sheets = google.sheets({ version: 'v4', auth: jwt });
 
 export const getGoodsFromGoogle = async () => {
   const range = 'Sheet1!A1:E11'; 
   const response = await sheets.spreadsheets.values.get({
-    spreadsheetId: '1XubvAOEQD2zhONEGegxYtOvKb8HmvIzBEuNFjSts9CU',
+    spreadsheetId: process.env.SPREADSHEET_ID,
     range,
   });
  if(response.data.values) {
