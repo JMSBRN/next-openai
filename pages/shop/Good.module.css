@@ -1,8 +1,6 @@
 .container {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 30px;
 }
 .main {
   display: flex;
@@ -29,45 +27,28 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.title {
-  font-size: 1.5rem;
+.titleStyle {
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-top: 1rem;
+  margin:  1rem 0;
+  color: grey;
 }
 
-.price {
+.priceStyle {
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 0.5rem;
-  color: #3f51b5;
+  color: red;
 }
 
-.description {
-  font-size: 1.1rem;
+.descriptionStyle {
+  font-size: 0.8rem;
   margin-top: 0.5rem;
   color: #666666;
 }
-
-.image {
-  margin-top: 1rem;
+.priceStyle span {
+  color: grey;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-@media (max-width: 600px) {
-  .main {
-    width: 100%;
-    max-width: none;
-    height: auto;
-  }
-
-  .title {
-    font-size: 1.2rem;
-  }
-
-  .price {
-    font-size: 1rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
-}

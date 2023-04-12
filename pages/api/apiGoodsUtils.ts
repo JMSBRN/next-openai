@@ -10,7 +10,7 @@ const jwt = new google.auth.JWT(
 const sheets = google.sheets({ version: 'v4', auth: jwt });
 
 export const getGoodsFromGoogle = async () => {
-  const range = 'Sheet1!A1:E11'; 
+  const range = 'Phones!A1:E11'; 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SPREADSHEET_ID,
     range,

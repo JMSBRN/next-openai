@@ -15,10 +15,10 @@ export const getStaticProps = async () => {
 };
 
 const Shop = ({ goods}: { goods: IGood[] }) => {
-  const { container, mainTitle, cards } = styles;
+  const { shopContainer, mainTitle, cards } = styles;
   const newArr = goods.slice(1);
   return (
-    <div className={container}>
+    <div className={shopContainer}>
       <div className={mainTitle}>Goods in store db from google Sheets</div>
       <div className={cards}>
         {newArr.map((el) => (

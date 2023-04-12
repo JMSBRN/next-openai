@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const Good = ({ good, data }: { good: IGood, data: IGood[]}) => {
-  const { container, main } = styles;
+  const { container, main, titleStyle, priceStyle,  descriptionStyle } = styles;
   const el = data
     .filter((el) => el.id === good.id)
     .map((el) => {
@@ -40,10 +40,10 @@ const Good = ({ good, data }: { good: IGood, data: IGood[]}) => {
   return (
     <div className={container}>
       <Link href={'/shop/shop'} className={main}>
-        <div className="title">{title}</div>
+        <div className={titleStyle}>{title}</div>
         <Image  src={img} width={200} height={400} alt={title} />
-        <div className="price"> Price {price}</div>
-        <div className="description">{description}</div>
+        <div className={priceStyle}><span>£</span> {price}</div>
+        <div className={descriptionStyle}>{description}</div>
       </Link>
     </div>
   );

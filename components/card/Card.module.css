@@ -1,9 +1,10 @@
 .card {
+  width: 200px;
+  height: 380px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
   border-radius: 0.5rem;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -12,13 +13,14 @@
 }
 .imageContainer {
   width: 100px;
-  height: 180px;
-  margin-bottom: 20px;
+  height: 200px;
 }
 .cardImage {
   width: 100%;
   height: 100%;
+  padding: 3px;
   object-fit: contain;
+  margin-bottom: 10px;
 }
 .card:hover {
   transform: translateY(-5px);
@@ -26,27 +28,34 @@
 }
 
 .cardTitle {
-  margin-top: 1rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.cardPprice {
-  margin-top: 0.5rem;
   font-size: 1.1rem;
   font-weight: bold;
   text-align: center;
-  color: #3f51b5;
+  color: #afafaf;
+}
+
+.cardPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: rgb(92, 92, 92);
+}
+.cardPrice span {
+  color: grey;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.cardPrice .priceCents  {
+  font-size: 0.6em;
 }
 
 .cardDescription {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  text-align: center;
+  height: 120px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
   color: #666666;
 }
 
-.cardImage {
-  margin-top: 1rem;
-}
