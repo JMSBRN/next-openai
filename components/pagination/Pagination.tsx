@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/hooks/reduxHooks';
 import { setPage } from '@/features/movies/moviesSlice';
 
 const Pagination = () => {
-  const { pagination } = styles;
+  const { pagination, selected } = styles;
   const dispatch = useAppDispatch();
   return (
     <>
@@ -15,6 +15,7 @@ const Pagination = () => {
        onPageChange={(e) => dispatch(setPage((e.selected + 1).toString()))}
        previousLabel="<<"
        nextLabel=">>"
+       activeClassName={selected}
        />
     </>
   );
