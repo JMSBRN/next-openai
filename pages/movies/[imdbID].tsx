@@ -23,9 +23,6 @@ const Movie = () => {
         <Preloader />
       ) : (
         <>
-          <Link className={styles.homeLink} href={'/movies/movies'}>
-            Back to Movies
-          </Link>
           <MovieInfo movieInfo={movieInfo} />
         </>
       )}
