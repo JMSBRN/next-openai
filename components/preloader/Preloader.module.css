@@ -17,7 +17,7 @@
   width: 70px;
   height: 70px;
   border: 6px solid rgba(0, 0, 0, 0.1);
-  border-top-color:  #bfe19f;
+  border-top-color:  #808080;
   border-radius: 50%;
   animation: spin 1s ease-in-out infinite;
   z-index: 100; /* Set the z-index to make sure the preloader is on top of everything else */

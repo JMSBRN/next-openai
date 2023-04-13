@@ -1,0 +1,23 @@
+.pagination {
+   margin: 30px auto 0 auto;
+   width: 100%;
+   max-width: 600px;
+   padding: 0 10px;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+
+.pagination li {
+    font-size: 18px;;
+    list-style: none;
+    color: rgb(144, 144, 144);
+}
+
+.pagination a {
+    font-weight: 600;
+   cursor: pointer;
+}
+.pagination a:hover {
+   color: rgb(255, 97, 97);
+}

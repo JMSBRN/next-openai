@@ -53,4 +53,5 @@ export interface IFormData {
   search: string;
   year: string;
   type: string;
+  page: string;
 }

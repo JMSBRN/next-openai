@@ -24,7 +24,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-  margin: 5rem 1rem;
+  margin: 2rem 1rem;
 }
 
 .container {

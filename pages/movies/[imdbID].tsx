@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import MovieInfo from '@/components/movie-info/MovieInfo';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { selectMovies } from '@/features/movies/moviesSlice';
-import styles from './Movie.module.css';
 import { getMovieInfoThunk } from '@/features/movies/getMovieInfoThunk';
 import Preloader from '@/components/preloader/Preloader';
 

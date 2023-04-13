@@ -6,7 +6,8 @@ const key = process.env.NEXT_PUBLIC_MOVIES_API_KEY;
 
 export const getMovies = async () => {
     const { search, year, type } = store.getState().movies.formData;
-    const url = `https://www.omdbapi.com/?s=${search}&y=${year}&type=${type}&page=1&apikey=${key}`;
+    const page = store.getState().movies.page;
+    const url = `https://www.omdbapi.com/?s=${search}&y=${year}&type=${type}&page=${page}&apikey=${key}`;
     const res = await fetch(url);
     const data = await res.json();    
      if(data.Response === 'True') {
