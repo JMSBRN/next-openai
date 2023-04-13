@@ -11,8 +11,9 @@ import styles from './Movies.module.css';
 import Pagination from '@/components/pagination/Pagination';
 
 const Movies = () => {
-  const { mainContainer, container, poster, welcome, offLine } = styles;
-  const { formData, movies, isLoading, isApiError, errorApi, isOffline, page } =
+  const { mainContainer, container, poster, welcome, offLine, selectedValues } =
+    styles;
+  const { formData, movies, isLoading, isApiError, errorApi, isOffline, page, totalResults } =
     useAppSelector(selectMovies);
   const dispatch = useAppDispatch();
   const isSearching = formData.search !== ' ';
@@ -32,7 +33,19 @@ const Movies = () => {
         </div>
       )}
       <SearchModal />
-      <Pagination />
+      {!!movies.length && (
+        <>
+          <>
+            <Pagination />
+            <div className={selectedValues}>
+              <div>{formData.search}</div>
+              <div>{formData.year}</div>
+              <div >{formData.type}</div>
+              <div> total results : {totalResults}</div>
+            </div>
+          </>
+        </>
+      )}
       {isLoading && <Preloader />}
       {!isSearching && (
         <div className={welcome}>

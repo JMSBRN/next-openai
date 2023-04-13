@@ -20,6 +20,7 @@ interface IInitialState {
     type: string;
   };
   page: string;
+  totalResults: string;
 }
 
 const initialState: IInitialState = {
@@ -36,7 +37,8 @@ const initialState: IInitialState = {
     sort: ' ',
     type: 'movie',
   },
-  page: '1'
+  page: '1',
+  totalResults: ''
 };
 
 const moviesSlice = createSlice({
@@ -46,6 +48,9 @@ const moviesSlice = createSlice({
   {
    setMovies: (state, action) => {
     state.movies = action.payload;
+   },
+   setTotalResults: (state, action) => {
+    state.totalResults = action.payload;
    },
     setFormData: (state, action) => {
       state.formData = action.payload;      
@@ -103,6 +108,6 @@ const moviesSlice = createSlice({
   }
 });
 
-export const { setFormData, setPage, setMovies, setErrorApi, setIsApiError, setMovieInfo, setselectedSort } = moviesSlice.actions;
+export const { setFormData, setPage, setTotalResults, setMovies, setErrorApi, setIsApiError, setMovieInfo, setselectedSort } = moviesSlice.actions;
 export const selectMovies = (state: RootState) => state.movies;
 export default moviesSlice.reducer;
