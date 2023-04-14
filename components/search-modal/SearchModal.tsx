@@ -16,9 +16,11 @@ const SearchModal = () => {
   const [formValue, setFormValue] = useState(formData);
 
   useEffect(()=> {
-    const formDataLocal = JSON.parse(localStorage.getItem('formData') || '{}');
-    if (formDataLocal) {
-      dispatch(setFormData(formDataLocal));
+      if(localStorage.getItem('formData')) {
+        const formDataLocal = JSON.parse(localStorage.getItem('formData') || '{}');
+      if (formDataLocal) {
+        dispatch(setFormData(formDataLocal));
+      }
     }
   },[dispatch]);
 
