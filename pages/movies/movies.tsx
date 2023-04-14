@@ -28,9 +28,7 @@ const Movies = () => {
   }, [dispatch]);
   useEffect(() => {
     isSearching && dispatch(getMoviesThunk());
-    console.log('test');
-    
-  }, [dispatch, isSearching, page]);
+  }, [dispatch, isSearching, page, formData]);
  const {search, type, year } = formData;
   return (
     <>
