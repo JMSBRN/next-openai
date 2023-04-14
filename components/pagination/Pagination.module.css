@@ -24,3 +24,10 @@
 .pagination a:hover {
    color: rgb(255, 97, 97);
 }
+
+@media only screen and (max-width: 480px)  {
+   .pagination {
+      display: block;
+      text-align: center;
+   }
+}
