@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SearchModal.module.css';
 
 const SearchModal = () => {
-  const { container, form } = styles;
+  const { container, form, radioBtns } = styles;
   const [modalDisplayed, setModalDisplayed] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const { formData } = useAppSelector(selectMovies);
@@ -76,7 +76,7 @@ const SearchModal = () => {
             </select>
           </label>
           <label>
-            <div>
+            <div className={radioBtns}>
               <label htmlFor="genre-comedy">
                 Movie
                 <input
