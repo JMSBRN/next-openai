@@ -1,10 +1,11 @@
 import {
   selectMovies,
   setFormData,
-  setselectedSort,
+  setPage,
+  setSelectedSort,
 } from '@/features/movies/moviesSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './SearchModal.module.css';
 
 const SearchModal = () => {
@@ -14,18 +15,27 @@ const SearchModal = () => {
   const { formData } = useAppSelector(selectMovies);
   const [formValue, setFormValue] = useState(formData);
 
+  useEffect(()=> {
+    const formDataLocal = JSON.parse(localStorage.getItem('formData') || '{}');
+    if (formDataLocal) {
+      dispatch(setFormData(formDataLocal));
+    }
+  },[dispatch]);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
+    dispatch(setPage('1'));
     if(name === 'sort') {
-      dispatch(setselectedSort(value));
+      dispatch(setSelectedSort(value));
     }
   };
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(setFormData(formValue));
+    localStorage.setItem('formData', JSON.stringify(formValue) || '{}');
   };
   return (
     <div

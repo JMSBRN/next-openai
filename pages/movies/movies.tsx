@@ -2,7 +2,7 @@ import ErrorModal from '@/components/error-modal/ErrorModal';
 import Preloader from '@/components/preloader/Preloader';
 import SearchModal from '@/components/search-modal/SearchModal';
 import { getMoviesThunk } from '@/features/movies/getMoviesThunk';
-import { selectMovies } from '@/features/movies/moviesSlice';
+import { selectMovies, setMovies, setTotalResults } from '@/features/movies/moviesSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,8 +18,19 @@ const Movies = () => {
   const dispatch = useAppDispatch();
   const isSearching = formData.search !== ' ';
   useEffect(() => {
+    const storedMovies = JSON.parse(localStorage.getItem('movies') || '[]');
+    if (storedMovies.length) {
+      dispatch(setMovies(storedMovies));
+    }
+    const storedTotlaResults = JSON.parse(localStorage.getItem('totalResults') || '""');
+    if (storedTotlaResults) {
+      dispatch(setTotalResults(storedTotlaResults));
+    }
+  }, [dispatch]);
+  useEffect(() => {
     isSearching && dispatch(getMoviesThunk());
-  }, [dispatch, page, formData, isSearching]);
+    
+  }, [dispatch, page, formData, isSearching, movies]);
 
   return (
     <>
@@ -38,16 +49,16 @@ const Movies = () => {
           <>
             <Pagination />
             <div className={selectedValues}>
-              <div>{formData.search}</div>
-              <div>{formData.year}</div>
-              <div >{formData.type}</div>
+              <div>{formData.search }</div>
+              <div>{formData.year || 'year not selected'}</div>
+              <div >{formData.type }</div>
               <div> total results : {totalResults}</div>
             </div>
           </>
         </>
       )}
       {isLoading && <Preloader />}
-      {!isSearching && (
+      {!movies.length && (
         <div className={welcome}>
           <h2>Discover your next favorite movie.</h2>
           <div>Try searching in the modal at the top.</div>

@@ -33,8 +33,8 @@ const initialState: IInitialState = {
   isOffline: false,
   formData: {
     search: ' ',
-    year: ' ',
-    sort: ' ',
+    year: '',
+    sort: '',
     type: 'movie',
   },
   page: '1',
@@ -67,7 +67,7 @@ const moviesSlice = createSlice({
     setMovieInfo: (state, acton) => {
       state.movieInfo = acton.payload;
     },
-    setselectedSort: (state, action) => {
+    setSelectedSort: (state, action) => {
       state.selectedSort = action.payload;
       switch (action.payload) {
         case 'a':
@@ -108,6 +108,6 @@ const moviesSlice = createSlice({
   }
 });
 
-export const { setFormData, setPage, setTotalResults, setMovies, setErrorApi, setIsApiError, setMovieInfo, setselectedSort } = moviesSlice.actions;
+export const { setFormData, setPage, setTotalResults, setMovies, setErrorApi, setIsApiError, setMovieInfo, setSelectedSort } = moviesSlice.actions;
 export const selectMovies = (state: RootState) => state.movies;
 export default moviesSlice.reducer;
