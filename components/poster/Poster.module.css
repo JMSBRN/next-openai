@@ -35,3 +35,8 @@
   border-radius: 0.5rem;
   object-fit: contain;
 }
+.noPosterInfo {
+    height: 40px;
+    font-size: 14px;
+    word-wrap: break-word;
+}

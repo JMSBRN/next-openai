@@ -8,12 +8,16 @@ interface  PosterProps {
     movie: IMovie;
 }
 const Poster = ({ movie }: PosterProps) => {
-    const {container, posterImage} = styles;
+    const {container, posterImage, noPosterInfo} = styles;
     const {imdbID, poster, title} = movie;
 
   return (
     <div key={imdbID} className={container}>
     <Link href={`/movies/${imdbID}`}>
+        { poster === 'N/A' && 
+         
+         <div className={noPosterInfo}>{title}</div>
+        }
       <Image
         className={posterImage}
         priority={true}
