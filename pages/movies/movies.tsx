@@ -4,14 +4,13 @@ import SearchModal from '@/components/search-modal/SearchModal';
 import { getMoviesThunk } from '@/features/movies/getMoviesThunk';
 import { selectMovies, setMovies, setTotalResults } from '@/features/movies/moviesSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect } from 'react';
 import styles from './Movies.module.css';
 import Pagination from '@/components/pagination/Pagination';
+import Poster from '@/components/poster/Poster';
 
 const Movies = () => {
-  const { mainContainer, container, poster, welcome, offLine, selectedValues } =
+  const { mainContainer, welcome, offLine, selectedValues } =
     styles;
   const { formData, movies, isLoading, isApiError, errorApi, isOffline, page, totalResults } =
     useAppSelector(selectMovies);
@@ -31,7 +30,7 @@ const Movies = () => {
     isSearching && dispatch(getMoviesThunk());
     
   }, [dispatch, page, formData, isSearching, movies]);
-
+ const {search, type, year } = formData;
   return (
     <>
       {isOffline && (
@@ -49,9 +48,9 @@ const Movies = () => {
           <>
             <Pagination />
             <div className={selectedValues}>
-              <div>{formData.search }</div>
-              <div>{formData.year || 'year not selected'}</div>
-              <div >{formData.type }</div>
+              <div>{search }</div>
+              <div>{year}</div>
+              <div >{type}</div>
               <div> total results : {totalResults}</div>
             </div>
           </>
@@ -67,22 +66,7 @@ const Movies = () => {
       {isApiError && <ErrorModal message={errorApi} />}
       <div className={mainContainer}>
         {movies.map((el) => (
-          <div key={el.imdbID} className={container}>
-            <Link href={`/movies/${el.imdbID}`}>
-              <Image
-                className={poster}
-                priority={true}
-                src={
-                  el.poster === 'N/A'
-                    ? '/images/no-poster-img.png'
-                    : (el.poster as string)
-                }
-                width={300}
-                height={200}
-                alt={el.title}
-              />
-            </Link>
-          </div>
+         <Poster key={el.imdbID} movie={el} />
         ))}
       </div>
     </>
