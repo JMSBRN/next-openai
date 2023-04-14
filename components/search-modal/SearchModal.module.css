@@ -5,7 +5,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    width: 90%;
+    min-width: 300px;
+    max-width: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,69 +34,11 @@
     color: rgb(47, 47, 47);
   }
   .form input, .form select {
+    margin: 10px;
     padding: 10px;
     outline: none;
     font-size: 18px;
     border-radius: 3px;
-    margin: 10px;
-  }
-
-  /* For mobile */
-@media (max-width: 768px) {
-  .form {
-    display: flex;
-    flex-direction: column;
-  }
-  .form label {
-    margin-bottom: 1px;
-  }
-  .form input,
-  .form select {
-    margin-bottom: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  .form input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-}
-
-/* For laptop and desktop */
-@media (min-width: 769px) {
-  
-  .container:hover {
-    height: 300px;
-    background-color: rgba(212, 212, 212, 0.8);
-    transition: height 0.5s ease, background-color 0.5s ease;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-  }
-  .form label {
-    margin-right: 10px;
-    font-size: 16px;
-  }
-  .form input,
-  .form select {
-    margin-right: 10px;
-    padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
@@ -112,4 +55,15 @@
     font-size: 16px;
     cursor: pointer;
   }
-}
+
+ @media only screen and (max-width: 620px) {
+   .container {
+    display: block;
+   }
+   .container:hover {
+    height: 450px;
+   }
+  .form input {
+    width: 90%;
+  }
+ }

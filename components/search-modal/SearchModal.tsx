@@ -48,7 +48,6 @@ const SearchModal = () => {
       {modalDisplayed && (
         <form className={form} onSubmit={submitForm}>
           <label>
-            Search:
             <input
               type="text"
               id="search-input"
@@ -58,7 +57,6 @@ const SearchModal = () => {
             />
           </label>
           <label>
-            Year:
             <input
               type="number"
               id="year-input"
@@ -70,12 +68,11 @@ const SearchModal = () => {
             />
           </label>
           <label>
-            Sort by:
             <select id="sort-select" name="sort" onChange={handleInputChange}>
-              <option value="a">Title A-Z</option>
-              <option value="b">Title Z-A</option>
-              <option value="c">Year max-min</option>
-              <option value="d">Year min-max</option>
+              <option value="a">Sort by Title A-Z</option>
+              <option value="b">Sort by Title Z-A</option>
+              <option value="c">Sort by Year max-min</option>
+              <option value="d">Sort by Year min-max</option>
             </select>
           </label>
           <label>
