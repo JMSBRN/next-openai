@@ -7,12 +7,14 @@ import { selectMovies, setPage } from '@/features/movies/moviesSlice';
 const Pagination = () => {
   const { pagination, selected } = styles;
   const dispatch = useAppDispatch();
+  const { page } = useAppSelector(selectMovies); 
   const { totalResults} = useAppSelector(selectMovies);
   return (
     <>
       <ReactPaginate
        pageCount={Math.ceil(Number(totalResults) / 10)}
        pageRangeDisplayed={10}
+       forcePage={Number(page) - 1}
        className={pagination}
        onPageChange={(e) => dispatch(setPage((e.selected + 1).toString()))}
        previousLabel="<<"

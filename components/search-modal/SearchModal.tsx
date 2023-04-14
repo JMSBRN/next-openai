@@ -29,7 +29,6 @@ const SearchModal = () => {
   ) => {
     const { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
-    dispatch(setPage('1'));
     if(name === 'sort') {
       dispatch(setSelectedSort(value));
     }
@@ -37,6 +36,7 @@ const SearchModal = () => {
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(setFormData(formValue));
+    dispatch(setPage('1'));
     localStorage.setItem('formData', JSON.stringify(formValue) || '{}');
   };
   return (
