@@ -10,7 +10,6 @@ import styles from './SearchModal.module.css';
 
 const SearchModal = () => {
   const { container, form, radioBtns } = styles;
-  const [modalDisplayed, setModalDisplayed] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const { formData } = useAppSelector(selectMovies);
   const [formValue, setFormValue] = useState(formData);
