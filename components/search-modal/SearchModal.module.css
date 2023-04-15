@@ -1,77 +1,55 @@
 .container {
-  margin: 0 auto;
-  position: absolute;
-  top: 80px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  min-width: 300px;
-  max-width: 600px;
+  width: 100%;
+  height: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  height: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: white;
-  background-color: rgb(184, 184, 184);
-  transition: height 0.5s ease;
-  z-index: 9999;
+  justify-content: center;
 }
 
-.container:hover {
-  height: 300px;
-  background-color: rgba(212, 212, 212, 0.8);
-  transition: height 0.5s ease, background-color 0.5s ease;
-}
 .form {
   width: 100%;
-  margin: 30px auto;
-}
-.form label {
-  margin: 2px;
-  color: rgb(47, 47, 47);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .form input,
 .form select {
   margin: 10px;
-  padding: 10px;
+  padding: 7px;
   outline: none;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 3px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 16px;
+}
+.form input[type="text"] {
+  min-width: 300px;
 }
 .form input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
+  padding: 6px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
   font-size: 16px;
+  background-color: transparent;
   cursor: pointer;
 }
 
 @media only screen and (max-width: 620px) {
-  .container {
+  .form {
     display: block;
-  }
-  .container:hover {
-    height: 450px;
   }
   .form input {
     width: 90%;
   }
   .radioBtns {
-    margin: 0;
-    padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+  }
+  .radioBtns input[type="radio"] {
+    margin: 4px 7px;
+    display: flex;
   }
 }

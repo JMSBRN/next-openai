@@ -9,6 +9,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
+  z-index: 2;
 }
 
 /* Style the spinner or animation for the preloader */
@@ -16,11 +17,11 @@
   display: inline-block;
   width: 70px;
   height: 70px;
-  border: 6px solid rgba(0, 0, 0, 0.1);
-  border-top-color:  #808080;
+  border: 6px solid rgba(255, 255, 255, 0.8);
+  border-top-color:  #73ed85;
   border-radius: 50%;
   animation: spin 1s ease-in-out infinite;
-  z-index: 100; /* Set the z-index to make sure the preloader is on top of everything else */
+  z-index: 2; /* Set the z-index to make sure the preloader is on top of everything else */
 }
 
 /* Define the keyframes for the spinner animation */
